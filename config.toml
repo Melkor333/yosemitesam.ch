@@ -1,0 +1,77 @@
+baseurl = "http://yosemitesam.ch"
+#title = "Samuel Hierholzer"
+theme = "hugo-coder"
+languagecode = "en"
+defaultcontentlanguage = "en"
+
+#paginate = 20
+
+#pygmentsstyle = "bw"
+#pygmentscodefences = true
+#pygmentscodefencesguesssyntax = true
+
+disqusShortname = "Sam"
+
+[params]
+  author = "Samuel Hierholzer"
+  info = "System Engineer & open source enthusiast"
+  description = "Sams personal website"
+  keywords = "sysadmin,personal"
+  #avatarurl = "images/avatar.jpg"
+  gravatar = "samuel@ton-kunst.ch"
+
+  favicon_32 = "/img/favicon-32x32.png"
+  favicon_16 = "/img/favicon-16x16.png"
+
+  footercontent = "Enter a text here."
+  hideFooter = true
+  #hideCredits = false
+  #hideCopyright = false
+  #since = 2021
+
+  #enableTwemoji = true
+
+  colorScheme = "dark"
+  hidecolorschemetoggle = true
+
+  #customCSS = ["css/custom.css"]
+  #customSCSS = ["scss/custom.scss"]
+  #customJS = ["js/custom.js"]
+
+#[taxonomies]
+#  category = "categories"
+#  series = "series"
+#  tag = "tags"
+#  author = "authors"
+
+# Social links
+[[params.social]]
+  name = "Github"
+  icon = "fa fa-github fa-2x"
+  weight = 1
+  url = "https://github.com/Melkor333/"
+[[params.social]]
+  name = "Gitlab"
+  icon = "fa fa-gitlab fa-2x"
+  weight = 2
+  url = "https://gitlab.com/Melkor333/"
+[[params.social]]
+  name = "Resume"
+  icon = "fa fa-user fa-2x"
+  weight = 3
+  url = "https://cv.yosemitesam.ch/"
+[[params.social]]
+  name = "LinkedIn"
+  icon = "fa fa-linkedin fa-2x"
+  weight = 4
+  url = "https://www.linkedin.com/in/samuel-hierholzer-9a0b4012a"
+
+# Menu links
+#[[menu.main]]
+#  name = "Blog"
+#  weight = 1
+#  url  = "posts/"
+#[[menu.main]]
+#  name = "About"
+#  weight = 2
+#  url = "https://cv.yosemitesam.ch"

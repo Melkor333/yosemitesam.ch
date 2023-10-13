@@ -56,13 +56,13 @@ disqusShortname = "Sam"
   weight = 2
   url = "https://gitlab.com/Melkor333/"
 [[params.social]]
-  name = "Resume"
-  icon = "fa fa-fingerprint fa-2x"
+  name = "CV"
+  icon = "fa fa-newspaper-o fa-2x"
   weight = 3
   url = "https://registry.jsonresume.org/Melkor333/"
 [[params.social]]
-  name = "Resume"
-  icon = "fa fa-blogger-b fa-2x"
+  name = "Blog"
+  icon = "fa fa-bold fa-2x"
   weight = 4
   url = "https://blog.yosemitesam.ch/"
 [[params.social]]

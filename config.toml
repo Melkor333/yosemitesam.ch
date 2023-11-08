@@ -56,11 +56,6 @@ disqusShortname = "Sam"
   weight = 2
   url = "https://gitlab.com/Melkor333/"
 [[params.social]]
-  name = "CV"
-  icon = "fa fa-newspaper-o fa-2x"
-  weight = 3
-  url = "https://registry.jsonresume.org/Melkor333/"
-[[params.social]]
   name = "Blog"
   icon = "fa fa-bold fa-2x"
   weight = 4
@@ -70,6 +65,11 @@ disqusShortname = "Sam"
   icon = "fa fa-linkedin fa-2x"
   weight = 5
   url = "https://www.linkedin.com/in/samuel-hierholzer-9a0b4012a"
+[[params.social]]
+  name = "CV"
+  icon = "fa fa-address-card fa-2x"
+  weight = 3
+  url = "https://registry.jsonresume.org/Melkor333/"
 
 # Menu links
 #[[menu.main]]

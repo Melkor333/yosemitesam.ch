@@ -1,9 +1,10 @@
 ---
 ---
+@use "fonts";
 @import url('https://fonts.cdnfonts.com/css/jetbrains-mono-2');
 
 :root {
-  --font-family: "JetBrains Mono", monospace;
+  --font-family: "Monaspace Neon", monospace;
   --line-height: 1.20rem;
   --border-thickness: 2px;
   --text-color: #000;
@@ -83,10 +84,11 @@ h1 {
   margin-bottom: calc(var(--line-height) * 2);
   text-transform: uppercase;
 }
-h2 {
+
+/* h2 {
   font-size: 1rem;
   text-transform: uppercase;
-}
+} */
 
 hr {
   position: relative;
@@ -192,6 +194,10 @@ img, video {
   object-fit: contain;
   overflow: hidden;
 }
+.img-small {
+  width: 150px;
+  float: right;
+}
 img {
   font-style: italic;
   color: var(--text-color-alt);
@@ -234,6 +240,7 @@ figure pre {
   margin: 0;
 }
 
+/*
 pre, code {
   font-family: var(--font-family);
 }
@@ -241,6 +248,7 @@ pre, code {
 code {
   font-weight: var(--font-weight-medium);
 }
+*/
 
 figure {
   margin: calc(var(--line-height) * 2) 3ch;
@@ -273,6 +281,10 @@ ol ol,
 ul ol,
 ul ul {
   padding: 0 0 0 3ch;
+  margin: 0;
+}
+ul ul p {
+  padding: 0 0 0 0;
   margin: 0;
 }
 ol li:before { 
@@ -463,3 +475,5 @@ label input {
 .debug-toggle-label {
   text-align: right;
 }
+
+@import "vim.css";

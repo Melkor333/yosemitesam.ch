@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>Recently I’ve been very unhappy with Firefox and Chrome. As a “power user” I think they’re really limited and extensions like Vimium can’t really be <em>that</em> polished.
+I’ve used <a href="https://qutebrowser.org/">Qutebrowser</a> before but somehow never stuck with it.
+And for some reason I decided I want to give <a href="https://nyxt.atlas.engineer/">Nyxt</a> a try now.</p>
+
+<p>Conceptually it is very appealing to me, as it’s inspired by Emacs and therefore extremely customizable.</p>
+
+<p>And oh boy, I <em>love</em> the experience on this unicorn ride!</p>
+
+<p>Here’s a few things after a few days of using it.</p>
+
+<h2 id="no-clutter">No clutter</h2>
+
+<p>Look at how freaking minimal this is! 2 lines at the bottom (and one of them usually empty).
+<img src="/assets/images/nyxt_view.png" alt="Screenshot of the Nyxt browser">
+<strong>THATS</strong>.
+<strong>IT</strong>.</p>
+
+<p>I’m not missing anything.</p>
+
+<h2 id="open-anything-very-fast">Open anything, <em>very fast</em>
+</h2>
+
+<p>using <code class="language-plaintext highlighter-rouge">o</code> in vi mode (or <code class="language-plaintext highlighter-rouge">ctrl+l</code> in emacs/cua mode) runs the command <code class="language-plaintext highlighter-rouge">set-url</code>, which is just awesome. by default it will either open the URL you type or search for something (when it’s not an url).
+But in the prompt it will also show you e.g. the global history, already open buffers or bookmarks. you can jump between the types by using <code class="language-plaintext highlighter-rouge">m+n</code> and <code class="language-plaintext highlighter-rouge">m+p</code>. <code class="language-plaintext highlighter-rouge">ctrl+n</code> and <code class="language-plaintext highlighter-rouge">ctrl+p</code> are for navigating single entries.
+I also like that it “previews” the buffer when I hover over an existing one (it also loads currently unloaded ones. Not sure I like that too much, though).
+<img src="/assets/images/2023-10-12-14-59_nyxt_awesome_open-1.gif" alt="Showcase of the workflow to open a new tab or existing buffer"></p>
+<h1 id="a-real-command-prompt">a <em>REAL</em> command prompt</h1>
+
+<p>There are omnibars for chrome/firefox. I’ve used some of them in the past. But the integration is always a bit… meh. Nyxt comes with a command prompt you would expect from a Emacs-inspired browser. It even shows the keybindings (though I still miss <a href="https://github.com/justbur/emacs-which-key">which-key</a>):</p>
+
+<p><img src="/assets/images/2023-10-12_13-17-08_nyxt_command_prompt.gif" alt="Showcase of the commandprompt"></p>
+
+<h2 id="mooooddeeesss">MOOOODDEEESSS</h2>
+
+<p>There are already quite some modes implemented (in lisp) to show you what is possible:</p>
+
+<ul>
+  <li>no-image-mode -&gt; Don’t download images</li>
+  <li>no-script-mode -&gt; Don’t run scripts</li>
+  <li>cruise-control-mode -&gt; automatically scroll down</li>
+  <li>dark-mode (see gif above!)</li>
+  <li>force-https-mode</li>
+  <li>proxy-mode (YES! PER BUFFER! there’s ways to make it global)</li>
+  <li>repeat-mode</li>
+  <li>and <em>many</em> more!</li>
+</ul>
+
+<p><img src="/assets/images/2023-10-12-15-25_nyxt_cruise_mode.gif" alt="Showcase of the cruise-control-mode"></p>
+
+<h2 id="extensibility">Extensibility</h2>
+
+<p>This is all just “builtin” stuff ready to be changed and extended, or “molded” as some emacsers would say.
+I know it’s <code class="language-plaintext highlighter-rouge">common lisp</code>… But IMO still better than a new vimscript 😜</p>
+
+<p>Btw. this whole blog post was written with only the below vi snippet in my configfile, so this is a topic I’ll have to explore…</p>
+
+<h1 id="warts">Warts</h1>
+
+<p>The unicorn sadly does have a few warts I noticed.</p>
+
+<h2 id="vi-mode-everywhere-no">Vi mode everywhere? NO!</h2>
+
+<p>The documentation only shows you how to enable vi mode globally. This is really ugly. If you enable vi mode and then press e.g. <code class="language-plaintext highlighter-rouge">o</code> to open a new buffer, you’re still in vi-normal mode. This means you have to press <code class="language-plaintext highlighter-rouge">oi</code> to be able to start typing in the prompt. Like <code class="language-plaintext highlighter-rouge">:</code> in vim I expect to be in a more emacs-y mode when opening any prompt.</p>
+
+<p>The proper snippet to fix this is (the <code class="language-plaintext highlighter-rouge">:web-buffer</code> is very important here):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(define-configuration :web-buffer
+  ((default-modes (append (list :vi-normal-mode) %slot-value%))))
+</code></pre></div></div>
+
+<h2 id="enter-the-common-lisp-community">Enter the common lisp community</h2>
+
+<p>The editor is mostly written and extensible by using common lisp. This is fine (I guess). But be ready to embrace the common lisp world! I’m not there yet, which is why I’m still mostly confused from the best <a href="https://github.com/aartaka/nyxt-config">example configuration</a>.
+I’m learning about <a href="https://asdf.common-lisp.dev/">asdf</a>, <a href="https://www.quicklisp.org/">quicklisp</a> and have to look at stuff like <a href="https://github.com/atlas-engineer/nx-ace/tree/master">ace</a> which I don’t really want to know about. (WHY do you want to transform a browser into an editor????).</p>
+
+<p>Thinking about it though, this is no different than emacs/vim. My brain is full of all these emacs-specific things and (n)vim is even worse - the amount of package managers from vim is insane!</p>
+
+<p>I’m used to a browser that <em>just works</em> ™️ and have to shift my mindset a bit.</p>
+
+<h2 id="enter-passtrough-mode---forever">Enter passtrough mode - forever!</h2>
+
+<p>I use <a href="https://silverbullet.md">silverbullet</a> to take notes (and write this blog) but when I enter the <a href="https://nyxt.atlas.engineer/documentation#passthrough-mode">passthrough-mode</a> and type something, I just can’t exit passthrough mode anymore.</p>
+
+<h2 id="hidden-links">Hidden links</h2>
+
+<p>One of the main features of this browser is the keyboard driven experience. This seems still a bit in it’s infancy though. I <em>really</em> like the idea of being able to search for the text OR be able to type a 2 letter shortcut (much better than qutebrowser, even if you have to type <code class="language-plaintext highlighter-rouge">Enter</code> to actually follow!), but when it’s underneath the prompt, well, bad luck, you will not see what you select.
+<img src="/assets/images/2023-10-12-14-43_nyxt_bottom.gif" alt="Showcase how links are invisible behind the prompt"></p>
+
+<h2 id="wtf-is-this-buffer-list">WTF is this buffer list</h2>
+
+<p>I really don’t get this ugly buffer list from such a “minimal” browser. Why all the margins? Why not make all Divs the same width?
+This could be an issue of personal taste, though.</p>
+
+<p>What I really don’t get is that it doesn’t even update automatically? You really want me to click the “Update” button after I’ve deleted a Buffer?
+Isn’t the whole joke of this browser that there are all kinds of hooks to automatically do such things for me?</p>
+
+<p><img src="/assets/images/2023-10-12_12-46-46_ugly_buffer_list.png" alt="Showcase of the very not-pretty buffer-list"></p>
+
+<h2 id="random-freezes">Random Freezes</h2>
+
+<p>It happened a few times that when i pressed <code class="language-plaintext highlighter-rouge">o</code> to open a new URL, the browser just froze. I had to shoot the process in the head. I have no clue what caused it - it seemed to happen at random times - but I hope that I’ll eventually see a pattern if it happens again. But given that my Firefox config had it’s own share of freezes (probably using too many extensions 😄), I’m sadly a bit used to this.</p>
+
+<h2 id="sloppy-search">Sloppy Search</h2>
+
+<p>I’m used to google search. It’s fast and VERY accurate. the default search <a href="https://search.atlas.engineer">https://search.atlas.engineer</a> is neither. I’m sorry but the results are just horrible. I searched for a local company with “COMPANYNAME zurich” and it only gave me american stuff (and surprisingly many linkedin links).
+I assume they have this as default search to hopefully gather some insights on who is using nyxt. And I thought I’ll try to get along with it. But I can’t.</p>
+
+<h2 id="broken-in-document-search">Broken in-document search</h2>
+
+<p>Searching in a document is very satisfying. <em>IF</em> it works. E.g. you can’t really search in a file opened on Github!
+<img src="/assets/images/2023-10-13_nyxt_search-1.gif" alt='Showcase of how I search for "defvar" and not get any results even though I should'></p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>I <em>really</em> like Nyxt. The few awesome examples don’t look like much, but they change the UX <strong>completely</strong>.
+There are quite some pain points - but <strong>most of them can be fixed with some configuration</strong>.</p>
+
+<p>The Pros <em>definitely</em> outweigh the cons!</p>
+
+<p>What will I do now?</p>
+
+<ul>
+  <li>I will keep using Nyxt for my main browsing.</li>
+  <li>Firefox will still be open most of the time for my note taking and other things which just don’t (yet) work, like J<a href="https://jitsi.org/">itsi</a>.</li>
+  <li>I will hopefully go deeper down the rabbit hole and eventually learn more about <a href="https://nyxt.atlas.engineer/article/nyxt-extensions-tutorial.org">creating my own extensions</a>, features such as <a href="https://nyxt.atlas.engineer/article/annotations.org">annotations</a>, <a href="https://nyxt.atlas.engineer/documentation#hooks">hooks</a>, etc.</li>
+  <li>And at some point, maybe, I will keep Firefox only as a “cold” backup</li>
+</ul>
+
+<h3 id="and-you">And you?</h3>
+
+<p>I hope you enjoyed the read and if you like tinkering with such tools - give Nyxt a try as well! 🙂</p>
+</body></html>

@@ -1,7 +1,18 @@
 ---
 layout: default
 ---
-<h1>{{ page.title }}</h1>
-<p>{{ page.date | date_to_string }} - {{ page.author }}</p>
+<table>
+  <tr>
+    <td colspan="3">
+      <h1 style="margin:0.2em; margin-bottom:0.06em">{{ page.title }}</h1>
+      {% if page.subtitle %}<p>{{ page.subtitle }}</p>{% endif %}</td>
+    </td>
+  </tr>
+  <tr>
+    <td>Author: {{ page.author }}</td>
+    <td>Date: {{ page.date | date_to_string }}</td>
+    <td>{% include readtime.html %}</td>
+  </tr>
+</table>
 
 {{ content }}

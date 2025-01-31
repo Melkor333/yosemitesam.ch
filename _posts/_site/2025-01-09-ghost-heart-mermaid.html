@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>How to <em>Automatically</em> Render Mermaid JS Source Blocks.</p>
+
+<p>The following guide shows how to use actual Markdown source blocks in a <a href="https://ghost.org/">Ghost blog</a> and make it automatically render to a <a href="https://mermaid.js.org/">Mermaid JS diagram</a>.</p>
+
+<p>Go to <code class="language-plaintext highlighter-rouge">Settings</code>-&gt;<code class="language-plaintext highlighter-rouge">Code Injection</code> (or better when only using it for a specific post; in the Post Settings there’s also <code class="language-plaintext highlighter-rouge">Code Injection</code>).
+In the <code class="language-plaintext highlighter-rouge">site header</code> tab add the following code snippet. Make sure you use the <a href="https://github.com/mermaid-js/mermaid/releases">newest version of Mermaid</a>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&lt;</span><span class="nx">script</span> <span class="nx">src</span><span class="o">=</span><span class="dl">"</span><span class="s2"> https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js </span><span class="dl">"</span><span class="o">&gt;&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div>
+
+<p>Now add the following to the <code class="language-plaintext highlighter-rouge">site footer</code>:</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+  <span class="kd">var</span> <span class="nx">mElements</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nf">getElementsByClassName</span><span class="p">(</span><span class="dl">"</span><span class="s2">language-mermaid</span><span class="dl">"</span><span class="p">);</span>
+  <span class="c1">// the mElements collections removes the element when outerHTML is changed</span>
+  <span class="c1">// therefore it's not an endless loop :)</span>
+  <span class="k">while </span><span class="p">(</span><span class="nx">mElements</span><span class="p">.</span><span class="nx">length</span> <span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">element</span> <span class="o">=</span> <span class="nx">mElements</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">element</span><span class="p">.</span><span class="nx">innerHTML</span><span class="p">;</span>
+    <span class="nx">element</span><span class="p">.</span><span class="nx">outerHTML</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">&lt;div class="mermaid"&gt;</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">text</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">&lt;/div&gt;</span><span class="dl">"</span><span class="p">;</span>
+  <span class="p">};</span>
+  <span class="nx">mermaid</span><span class="p">.</span><span class="nf">initialize</span><span class="p">({</span><span class="na">startOnLoad</span><span class="p">:</span><span class="kc">true</span><span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>This snippet replaces every <code class="language-plaintext highlighter-rouge">mermaid</code> code block with a <code class="language-plaintext highlighter-rouge">div</code> of class <code class="language-plaintext highlighter-rouge">mermaid</code>. Mermaid renders these div blocks on initialization.</p>
+
+<p>And now if you add a block like:</p>
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">mermaid
+</span><span class="sb">  gitGraph
+   commit id: "post"
+   commit id: "Another post"
+   branch mermaid
+   checkout mermaid
+   commit id: "Add header"
+   commit id: "Add footer"
+   checkout main
+   merge mermaid
+   commit id: "Stonks"</span>
+<span class="p">```</span>
+</code></pre></div></div>
+
+<p>It should be rendered as follows (unless you hate Javascript or something else went wrong):</p>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoiZ2l0R3JhcGhcbmNvbW1pdCBpZDogXCJwb3N0XCJcbmNvbW1pdCBpZDogXCJBbm90aGVyIHBvc3RcIlxuYnJhbmNoIG1lcm1haWRcbmNoZWNrb3V0IG1lcm1haWRcbmNvbW1pdCBpZDogXCJBZGQgaGVhZGVyXCJcbmNvbW1pdCBpZDogXCJBZGQgZm9vdGVyXCJcbmNoZWNrb3V0IG1haW5cbm1lcmdlIG1lcm1haWRcbmNvbW1pdCBpZDogXCJTdG9ua3NcIiIsIm1lcm1haWQiOm51bGx9"></p>
+
+<p>Now you can use proper source blocks while editing your markdown and even get the same experience if you publish a <a href="https://silverbullet.md/">Silverbullet</a> page.</p>
+</body></html>

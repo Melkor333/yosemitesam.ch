@@ -1,0 +1,6 @@
+{% capture time %}
+{{ content | number_of_words | divided_by: 150 }}
+{% endcapture %}
+{% unless time contains '-' %}
+{{ time }} {% if time == 1 %}minute{% else %}minutes{% endif %}
+{% endunless %}

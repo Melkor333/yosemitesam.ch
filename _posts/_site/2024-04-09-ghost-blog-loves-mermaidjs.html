@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>How to <em>Automatically</em> Render Mermaid JS Source Blocks.</p>
+
+<p>The following guide shows how to use actual Markdown source blocks in a <a href="https://ghost.org/">Ghost blog</a> and make it automatically render to a <a href="https://mermaid.js.org/">Mermaid JS diagram</a>.</p>
+
+<p>Go to <code class="language-plaintext highlighter-rouge">Settings</code>-&gt;<code class="language-plaintext highlighter-rouge">Code Injection</code> (or better when only using it for a specific post; in the Post Settings there’s also <code class="language-plaintext highlighter-rouge">Code Injection</code>).</p>
+
+<p>In the <code class="language-plaintext highlighter-rouge">site header</code> tab add the following code snippet. Make sure you use the <a href="https://github.com/mermaid-js/mermaid/releases">newest version of Mermaid</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script src=" https://cdn.jsdelivr.net/npm/mermaid@10.9.0/dist/mermaid.min.js "&gt;&lt;/script&gt;
+</code></pre></div></div>
+
+<p>Now add the following to the <code class="language-plaintext highlighter-rouge">site footer</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;script&gt;
+  var mElements = document.getElementsByClassName("language-mermaid");
+  // the mElements collections removes the element when outerHTML is changed
+  // therefore it's not an endless loop :)
+  while (mElements.length &gt;0) {
+    var element = mElements[0];
+    let text = element.innerHTML;
+    element.outerHTML = '&lt;div class="mermaid"&gt;' + text + "&lt;/div&gt;";
+  };
+  mermaid.initialize({startOnLoad:true});
+&lt;/script&gt;
+</code></pre></div></div>
+
+<p>This snippet replaces every <code class="language-plaintext highlighter-rouge">mermaid</code> code block with a <code class="language-plaintext highlighter-rouge">div</code> of class <code class="language-plaintext highlighter-rouge">mermaid</code>. Mermaid renders these div blocks on initialization.</p>
+
+<p>And now if you add a block like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>```mermaid
+  gitGraph
+   commit id: "post"
+   commit id: "Another post"
+   branch mermaid
+   checkout mermaid
+   commit id: "Add header"
+   commit id: "Add footer"
+   checkout main
+   merge mermaid
+   commit id: "Stonks"
+```
+</code></pre></div></div>
+
+<p>It should be rendered as follows (unless you hate Javascript or something else went wrong):</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  gitGraph
+   commit id: "post"
+   commit id: "Another post"
+   branch mermaid
+   checkout mermaid
+   commit id: "Add header"
+   commit id: "Add footer"
+   checkout main
+   merge mermaid
+   commit id: "Stonks"
+</code></pre></div></div>
+
+<p>Now you can use proper source blocks while editing your markdown and even get the same experience if you publish a <a href="https://silverbullet.md/">Silverbullet</a> page.</p>
+</body></html>

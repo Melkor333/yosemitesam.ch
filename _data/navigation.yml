@@ -1,4 +1,9 @@
-- name: Posts
+- name: me
   link: /
-- name: about
-  link: /about.html
+- name: blog
+  link: /blog
+- name: cv
+  link: https://registry.jsonresume.org/Melkor333/
+- name: github
+  link: https://github.com/Melkor333/
+

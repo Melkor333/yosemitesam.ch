@@ -1,0 +1,38 @@
+<script>
+  function toggleMode() {
+    dark = !dark
+    localStorage.setItem("dark", dark);
+    let button = document.getElementById('dark-mode-switcher')
+    if (dark) {
+      console.log("setting dark mode");
+      document.documentElement.style.setProperty("--text-color", "#fff");
+      document.documentElement.style.setProperty("--text-color-alt", "#fff");
+      document.documentElement.style.setProperty("--background-color", "#000");
+      document.documentElement.style.setProperty("--background-color-alt", "#111");
+      button.innerHTML = "bright";
+    } else {
+      console.log("setting bright mode");
+      document.documentElement.style.setProperty("--text-color", "#000");
+      document.documentElement.style.setProperty("--text-color-alt", "#666");
+      document.documentElement.style.setProperty("--background-color", "#fff");
+      document.documentElement.style.setProperty("--background-color-alt", "#eee");
+      button.innerHTML = "dark";
+    }
+  }
+
+  var dark = localStorage.getItem("dark");
+  console.log(dark)
+  if (dark === null) {
+    console.log("darkmode not set");
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      var dark = true;
+    } else {
+      var dark = false;
+    }
+    localStorage.setItem("dark", dark);
+  } else {
+    dark = dark !== 'true' // invert because toggle swaps it again
+    toggleMode();
+  }
+</script>
+<script src="assets/js/theme.js"></script>

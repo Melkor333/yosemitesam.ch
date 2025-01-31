@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<h1>Latest Posts</h1>
+
+<ul class="tree">
+
+  {% for post in site.posts %}
+  {% assign currentyear = post.date | date: "%Y" %}
+  {% if currentyear != date %}
+  {% unless forloop.first %}</ul>{% endunless %}
+<h2 id="y{{post.date | date: "%Y"}}">{{ currentyear }}</h2>
+<ul>
+  {% assign date = currentyear %}
+  {% endif %}
+  <li>
+    <p style="text-transform: uppercase; font-weight: bold;">{{ post.date | date: '%b %d' }} | <a href="{{ post.url }}">{{ post.title }}</a></p>
+    <ul>
+      <li>
+        {% include readtime.html content=page.content %}
+      </li>
+      <li>
+        {% if post.post.excerpt %}{{ post.post.excerpt }}{% else %}{{ post.excerpt }}{% endif %}
+      </li>
+    </ul>
+  </li>
+  {% if forloop.last %}</ul>{% endif %}
+{% endfor %}
+</ul>

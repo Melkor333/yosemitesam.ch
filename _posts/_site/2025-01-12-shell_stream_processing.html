@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body>
+<p>I saw the <a href="https://bsky.app/profile/cyberciti.biz/post/3lffkfje3fk2e">following post</a> on bluesky yesterday and immediately had to optimize it:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget ftp.gnu.org/gnu/bash/bash-5.2.tar.gz &amp;&gt;/dev/null <span class="se">\</span>
+<span class="o">&amp;&amp;</span> <span class="nb">tar</span> <span class="nt">-xz</span> bash-5.2.tar.gz <span class="se">\</span>
+<span class="o">&amp;&amp;</span> <span class="nb">grep</span> <span class="nt">-A2</span> Birthdate bash-5.2/shell.c <span class="se">\</span>
+<span class="o">&amp;&amp;</span> <span class="nb">rm</span> <span class="nt">-rf</span> bash-5.2<span class="k">*</span>
+</code></pre></div></div>
+
+<p>The whole thing can be optimized to not use the filesystem at all, be shorter and faster!</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> ftp.gnu.org/gnu/bash/bash-5.2.tar.gz | <span class="nb">tar</span> <span class="nt">-xzO</span> | <span class="nb">grep</span> <span class="nt">-A2</span> <span class="nt">-m1</span> Birthdate
+</code></pre></div></div>
+
+<p>After I posted my optimization something wouldn’t go out of my head anymore. This is a prime example of using shell for stream processing; Download a tarball, unpack it and search for a string. Stop everything once the first occurence is found.</p>
+
+<p>Shell makes it super easy to start such streams, even concurrently in the background when a single <code class="language-plaintext highlighter-rouge">&amp;</code> is added. Almost any other language makes it hard to do concurrency.</p>
+
+<p>But it’s rather hard to actually write concurrent <em>functions</em>. Using <code class="language-plaintext highlighter-rouge">read</code> to loop over lines of input isn’t completely trivial and shell by itself is generally not an easy language for text manipulation (which is a bit ironic given strings are pretty much the only data type). It’s also unbuffered, thus super slow.</p>
+
+<p>But this is only true for all the POSIX shells with concepts from the 90ies like Bash, Ksh, Zsh, *ash, etc. Modern shells like Nushell or Ysh (Oils-for-Unix) have more datatypes, simpler ways to loop over lines and more comfortable text manipulation. They also know buffered reads.</p>
+
+<p>I believe modern shells don’t just remove warts and unnecessary complexity in old shells. They allow newer programming styles! I’m off now, writing more stream-focussed code in Ysh!</p>
+
+<p>Btw. the output of the initial snippet is:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  Birthdate:
+  Sunday, January 10th, 1988.
+  Initial author: Brian Fox
+</code></pre></div></div>
+</body></html>

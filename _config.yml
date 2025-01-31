@@ -4,6 +4,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
+      author: "Samuel Hierholzer"
   - scope:
       path: ""
     values:
@@ -15,8 +16,12 @@ plugins:
   - jekyll-seo-tag
   - jekyll-spaceship
 
+page_excerpts: true
+
 jekyll-spaceship:
   mermaid-processor:
     mode: default  # mode value 'pre-fetch' for fetching image at building stage
     config:
-      theme: neutral
+      theme: forest
+
+permalink: /:title/

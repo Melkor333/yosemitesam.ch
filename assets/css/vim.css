@@ -14,7 +14,7 @@ em {
 } 
 
 .language-plaintext {
-  color: Chartreuse
+  color: #5fad1a
 }
 
 .highlight .c, .highlight .c1, .highlight .cs {
@@ -32,10 +32,10 @@ em {
 .highlight .gp { font-weight: bold; } /* Generic.Prompt */
 .highlight .gs { font-weight: bold } /* Generic.Strong */
 .highlight .gu { font-weight: bold } /* Generic.Subheading */
-.highlight .kc { font-weight: bold; color: Chartreuse } /* Keyword.Constant */
-.highlight .kd { font-weight: bold; color: Chartreuse } /* Keyword.Declaration */
-.highlight .kn { font-weight: bold; color: Chartreuse } /* Keyword.Namespace */
-.highlight .kr { font-weight: bold; color: Chartreuse } /* Keyword.Reserved */
+.highlight .kc { font-weight: bold; color: #5fad1a } /* Keyword.Constant */
+.highlight .kd { font-weight: bold; color: #5fad1a } /* Keyword.Declaration */
+.highlight .kn { font-weight: bold; color: #5fad1a } /* Keyword.Namespace */
+.highlight .kr { font-weight: bold; color: #5fad1a } /* Keyword.Reserved */
 .highlight .s { font-style: italic; color: grey } /* Literal.String */
 .highlight .na { font-weight: bold; color: green } /* Name.Command ??? */
 .highlight .nb { font-weight: bold; color: green } /* Name.Command ??? */

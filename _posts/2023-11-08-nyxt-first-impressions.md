@@ -73,9 +73,10 @@ The documentation only shows you how to enable vi mode globally. This is really 
 
 The proper snippet to fix this is (the `:web-buffer` is very important here):
 
-    (define-configuration :web-buffer
-      ((default-modes (append (list :vi-normal-mode) %slot-value%))))
-    
+```elisp
+(define-configuration :web-buffer
+  ((default-modes (append (list :vi-normal-mode) %slot-value%))))
+```
 
 ## Enter the common lisp community
 

@@ -1,8 +1,6 @@
 ---
-layout: default
+title: Samuel Hierholzer
 ---
-# Samuel Hierholzer
-
 ![Samuel Hierholzer](/assets/images/me.jpeg){:class="img-small"}
 > System Engineer & open source enthusiast
 

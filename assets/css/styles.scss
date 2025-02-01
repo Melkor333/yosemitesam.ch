@@ -157,10 +157,17 @@ th, td {
   vertical-align: top;
   text-align: left;
 }
+
 table tbody tr:first-child > * {
   padding-top: calc((var(--line-height) / 2) - var(--border-thickness));
 }
 
+td h1, td h2, td h3 {
+    margin: 0.2ch;
+    margin-bottom: 0;
+    margin-left: 0.3ch;
+    line-height: calc(var(--line-height) * 2);
+}
 
 th {
   font-weight: 700;

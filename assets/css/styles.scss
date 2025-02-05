@@ -1,7 +1,7 @@
 ---
 ---
 @use "fonts";
-@import url('https://fonts.cdnfonts.com/css/jetbrains-mono-2');
+@import "reset.css";
 
 :root {
   --font-family: "Monaspace Neon", monospace;
@@ -45,6 +45,7 @@
 html {
   display: flex;
   width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   flex-direction: column;
@@ -56,11 +57,28 @@ html {
 body {
   position: relative;
   width: 100%;
+  height: 100%;
   margin: 0;
   padding: var(--line-height) 2ch;
   max-width: calc(min(80ch, round(down, 100%, 1ch)));
   line-height: var(--line-height);
   overflow-x: hidden;
+}
+
+/* to allow attaching a footer */
+#container {
+  min-height: 100%;
+  position: relative;
+}
+
+#content {
+  padding-bottom: 2em;
+}
+
+#footer {
+  position:absolute;
+  bottom:0;
+  width:100%;
 }
 
 @media screen and (max-width: 480px) {
@@ -224,12 +242,12 @@ details[open] summary {
   margin-bottom: var(--line-height);
 }
 
-details ::marker {
+details summary ::marker {
   display: inline-block;
   content: '▶';
   margin: 0;
 }
-details[open] ::marker {
+details[open] summary ::marker {
   content: '▼';
 }
 
@@ -483,4 +501,4 @@ label input {
   text-align: right;
 }
 
-@import "vim.css";
+@import "colors.css";

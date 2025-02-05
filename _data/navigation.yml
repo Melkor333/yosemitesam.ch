@@ -1,4 +1,4 @@
-- name: home
+- name: latest
   link: /index
 - name: archive
   link: /archive

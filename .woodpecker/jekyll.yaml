@@ -1,0 +1,36 @@
+steps:
+  build:
+    when:
+      event: [push, pull_request]
+    # Use the official jekyll build container
+    image: jekyll/jekyll
+    environment:
+      # secrets must be set in Woodpecker configuration
+      CBMAIL:
+        from_secret: cbmail
+      CBTOKEN:
+        from_secret: cbtoken
+    commands:
+      # Avoid permission denied errors
+      - chmod -R a+w .
+      # Set up git in a working way
+      - git config --global --add safe.directory /woodpecker/src/codeberg.org/CBUSER/CBIN/_site
+      - git config --global user.email "$CBMAIL"
+      - git config --global user.name "CI Builder"
+      - git config --global init.defaultBranch pages
+      # clone and move the target repo
+      - git clone -b pages https://codeberg.org/Melkor333/yosemitesam.ch.git
+      - mv CBOUT _site
+      - chmod -R a+w _site
+      - cd _site
+      # Prepare for push
+      - git remote set-url origin https://$CBTOKEN@codeberg.org/yosemitesam.ch.git
+      - cd ..
+      # Run Jekyll build stage
+      - bundle install
+      - bundle exec jekyll build
+      # Push to target
+      - cd _site
+      - git add --all
+      - git commit -m "Woodpecker CI Jekyll Build at $( env TZ=Europe/Berlin date +"%Y-%m-%d %X %Z" ) [SKIP CI]"
+      - git push

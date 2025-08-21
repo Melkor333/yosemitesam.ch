@@ -1,6 +1,6 @@
 <nav>
   {% for item in site.data.navigation %}
-    <a href="{{ item.link }}"{% if page.url == item.link %} class="current"{% endif %}>{{ item.name }}</a>
+  <a href="{% if item.internal %}{{ site.baseurl }}{% endif %}{{ item.link }}"{% if page.url == item.link %} class="current"{% endif %}>{{ item.name }}</a>
   {% endfor %}
   <button onclick="toggleMode()" id="dark-mode-switcher" type="button" value="Toggle dark mode" style="float: right;">dark mode</button>
   <i id="icon-dark" class="fa fa-moon"></i>

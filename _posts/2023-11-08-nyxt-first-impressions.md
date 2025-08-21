@@ -19,7 +19,7 @@ Here's a few things after a few days of using it.
 
 Look at how freaking minimal this is! 2 lines at the bottom (and one of them usually empty).
 
-![Screenshot of the Nyxt browser](/assets/images/nyxt_view.png)
+![Screenshot of the Nyxt browser]({{ site.baseurl }}/assets/images/nyxt_view.png)
 
 **THATS**
 
@@ -33,13 +33,13 @@ using `o` in vi mode (or `ctrl+l` in emacs/cua mode) runs the command `set-url`,
 But in the prompt it will also show you e.g. the global history, already open buffers or bookmarks. you can jump between the types by using `m+n` and `m+p`. `ctrl+n` and `ctrl+p` are for navigating single entries.
 I also like that it “previews” the buffer when I hover over an existing one (it also loads currently unloaded ones. Not sure I like that too much, though).
 
-![Showcase of the workflow to open a new tab or existing buffer](/assets/images/2023-10-12-14-59_nyxt_awesome_open-1.gif)
+![Showcase of the workflow to open a new tab or existing buffer]({{ site.baseurl }}/assets/images/2023-10-12-14-59_nyxt_awesome_open-1.gif)
 
 # a *REAL* command prompt
 
 There are omnibars for chrome/firefox. I’ve used some of them in the past. But the integration is always a bit... meh. Nyxt comes with a command prompt you would expect from a Emacs-inspired browser. It even shows the keybindings (though I still miss [which-key](https://github.com/justbur/emacs-which-key)):
 
-![Showcase of the commandprompt](/assets/images/2023-10-12_13-17-08_nyxt_command_prompt.gif)
+![Showcase of the commandprompt]({{ site.baseurl }}/assets/images/2023-10-12_13-17-08_nyxt_command_prompt.gif)
 
 ## MOOOODDEEESSS
 
@@ -54,7 +54,7 @@ There are already quite some modes implemented (in lisp) to show you what is pos
 - repeat-mode
 - and *many* more!
 
-![Showcase of the cruise-control-mode](/assets/images/2023-10-12-15-25_nyxt_cruise_mode.gif)
+![Showcase of the cruise-control-mode]({{ site.baseurl }}/assets/images/2023-10-12-15-25_nyxt_cruise_mode.gif)
 
 ## Extensibility
 
@@ -95,7 +95,7 @@ I use [silverbullet](https://silverbullet.md) to take notes (and write this blog
 
 One of the main features of this browser is the keyboard driven experience. This seems still a bit in it’s infancy though. I *really* like the idea of being able to search for the text OR be able to type a 2 letter shortcut (much better than qutebrowser, even if you have to type `Enter` to actually follow!), but when it’s underneath the prompt, well, bad luck, you will not see what you select.
 
-![Showcase how links are invisible behind the prompt](/assets/images/2023-10-12-14-43_nyxt_bottom.gif)
+![Showcase how links are invisible behind the prompt]({{ site.baseurl }}/assets/images/2023-10-12-14-43_nyxt_bottom.gif)
 
 ## WTF is this buffer list
 
@@ -105,7 +105,7 @@ This could be an issue of personal taste, though.
 What I really don’t get is that it doesn’t even update automatically? You really want me to click the “Update” button after I’ve deleted a Buffer?
 Isn’t the whole joke of this browser that there are all kinds of hooks to automatically do such things for me?
 
-![Showcase of the very not-pretty buffer-list](/assets/images/2023-10-12_12-46-46_ugly_buffer_list.png)
+![Showcase of the very not-pretty buffer-list]({{ site.baseurl }}/assets/images/2023-10-12_12-46-46_ugly_buffer_list.png)
 
 ## Random Freezes
 
@@ -119,7 +119,7 @@ I assume they have this as default search to hopefully gather some insights on w
 ## Broken in-document search
 
 Searching in a document is very satisfying. *IF* it works. E.g. you can’t really search in a file opened on Github!
-![Showcase of how I search for &quot;defvar&quot; and not get any results even though I should](/assets/images/2023-10-13_nyxt_search-1.gif)
+![Showcase of how I search for &quot;defvar&quot; and not get any results even though I should]({{ site.baseurl }}/assets/images/2023-10-13_nyxt_search-1.gif)
 
 # Conclusion
 

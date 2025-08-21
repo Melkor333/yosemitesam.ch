@@ -3,7 +3,7 @@ $styles: Medium, BoldItalic, Bold, Italic, Regular,
 @each $style in $styles
   @font-face
       // This is parsed as a normal function call that takes a quoted string.
-      src: url("/assets/fonts/MonaspaceNeon/MonaspaceNeon-#{$style}.woff2") format("woff2")
+      src: url("../fonts/MonaspaceNeon/MonaspaceNeon-#{$style}.woff2") format("woff2")
       font-family: "Monaspace Neon"
       @if $style == 'Bold' or $style == 'BoldItalic'
         font-weight: bold
@@ -13,7 +13,7 @@ $styles: Medium, BoldItalic, Bold, Italic, Regular,
 @each $style in $styles
   @font-face
       // This is parsed as a normal function call that takes a quoted string.
-      src: url("/assets/fonts/MonaspaceRadon/MonaspaceRadon-#{$style}.woff2") format("woff2")
+      src: url("../fonts/MonaspaceRadon/MonaspaceRadon-#{$style}.woff2") format("woff2")
       font-family: "Monaspace Radon"
       @if $style == 'bold'
         font-weight: bold
@@ -23,7 +23,7 @@ $styles: Medium, BoldItalic, Bold, Italic, Regular,
 @each $style in $styles
   @font-face
       // This is parsed as a normal function call that takes a quoted string.
-      src: url("/assets/fonts/MonaspaceKrypton/MonaspaceKrypton-#{$style}.woff2") format("woff2")
+      src: url("../fonts/MonaspaceKrypton/MonaspaceKrypton-#{$style}.woff2") format("woff2")
       font-family: "Monaspace Krypton"
       @if $style == 'bold'
         font-weight: bold

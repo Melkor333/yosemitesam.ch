@@ -1,7 +1,7 @@
 ---
 title: Samuel Hierholzer
 ---
-![Samuel Hierholzer](/assets/images/me.jpeg){:class="img-small"}
+![Samuel Hierholzer]({{ site.baseurl }}/assets/images/me.jpeg){:class="img-small"}
 > System Engineer & open source enthusiast
 
 I do things on and with Linux.

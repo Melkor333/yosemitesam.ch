@@ -16,6 +16,7 @@ The whole thing can be optimized to not use the filesystem at all, be shorter an
 
 ```bash
 curl -s ftp.gnu.org/gnu/bash/bash-5.2.tar.gz | tar -xzO | grep -A2 -m1 Birthdate
+
 ```
 
 After I posted my optimization something wouldn’t go out of my head anymore. This is a prime example of using shell for stream processing; Download a tarball, unpack it and search for a string. Stop everything once the first occurence is found.

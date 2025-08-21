@@ -15,14 +15,6 @@ title: Archive
     <p style="text-transform: uppercase; font-weight: bold;">{{ post.date | date: '%b %d' }} | <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></p>
     <ul>
       <li>
-        {% capture time %}
-        {{ post.content | number_of_words | divided_by: 150 }}
-        {% endcapture %}
-        {% unless time contains '-' %}
-        {{ time }} {% if time == 1 %}minute{% else %}minutes{% endif %}
-        {% endunless %}
-      </li>
-      <li>
         {% if post.post.excerpt %}{{ post.post.excerpt }}{% else %}{{ post.excerpt }}{% endif %}
       </li>
     </ul>

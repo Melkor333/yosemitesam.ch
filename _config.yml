@@ -19,6 +19,10 @@ plugins:
 page_excerpts: true
 
 jekyll-spaceship:
+  processors:
+    - mermaid-processor
+    - emoji-processor
+    - media-processor
   mermaid-processor:
     mode: default  # mode value 'pre-fetch' for fetching image at building stage
     config:

@@ -9,7 +9,7 @@ Recent frontier LLMS write even somewhat decent code. So *yey* to that!
 
 **BUT** if you look at the code and think to yourself `doesn't look wrong to me`, that's **NOT** a review.
 
-For a proper review, you need to understand
+For a proper review, you need to understand:
 - the code.
 - why it was implemented that way.
 - how YOU would implement it (and if that's significantly different).
@@ -19,7 +19,7 @@ It doesn't even matter if the code you look at is AI written or not!
 
 The LLM already speeds up the production of the code massively.
 
-> **Please stop expecting it also increases the tempo in which you can understand it.**
+> **Please stop thinking it also increases the tempo in which you can understand it.**
 
 You're already winning time by not writing the code. Take some of that time to read and understand the code.
 

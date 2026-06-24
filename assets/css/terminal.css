@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  height: 100vh;
+}
+
+#aside {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#left {
+  width: 700px;
+  min-heigth: 350px;
+  display: flex;
+  flex: 0 0 50%;
+}
+
+#right {
+  width: 50%;
+  flex: 0 3 50%;
+}
+
+#content {
+  overflow: auto;
+}
+
+/* 🔽 Mobile layout */
+@media (max-width: 1000px) {
+  body {
+    flex-direction: column;
+  }
+
+  #right {
+    order: 1;
+    width: 100%;
+    height: auto;
+    flex: 1;
+    border-left: none;
+    overflow: hidden;
+  }
+
+  #left {
+    order: 2;
+    width: 100%;
+    heigth: 350px;
+    flex-shrink: 0;
+  }
+}

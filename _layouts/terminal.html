@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/styles.css">
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/terminal.css">
+    {% feed_meta %}
+    {% seo %}
+
+    <!-- Terminal stuff -->
+    <script src="{{ site.baseurl }}/assets/vm/build/libv86.js"></script>
+    <script type="module">
+    "use strict";
+
+    // Right side
+    const content = document.getElementById("content");
+    //const page = document.getElementById("right");
+    const current = new URL(window.location.href);
+
+    async function updateHtml(url) {
+      var el = document.createElement('html');
+
+      var response = await fetch(url);
+      // Only replace the content
+      el.innerHTML = await response.text();
+      content.innerHTML = el.querySelector("#content").innerHTML;
+
+      for (const link of document.links) {
+        link.addEventListener("click", async (e) => {
+          e.preventDefault();
+          console.log(e)
+          const t = e.target.closest('a');
+          if (!t) { return; }
+
+          const url = t.getAttribute("href");
+          console.log("opening url in sidebar: " + url)
+          if (!url.startsWith("{{ site.baseurl }}")) {
+       	    window.open(url, "_blank", "noopener");
+       	    return;
+          }
+          try {
+            updateHtml(url);
+          } catch (err) {
+            content.innerHTML = "<p style='color:red;'>Failed to load blog (likely CORS issue).</p>";
+            console.error(err);
+          }
+        });
+      }
+    }
+    if (document.referrer.startsWith("{{ site.baseurl }}")) {
+      updateHtml(document.referrer)
+    } else {
+      updateHtml("{{ site.baseurl }}/archive")
+    }
+    </script>
+    <script>
+    // Terminal
+    window.onload = function()
+    {
+        var emulator = new V86({
+          wasm_path: "{{ site.baseurl }}/assets/vm/build/v86.wasm",
+          memory_size: 512 * 1024 * 1024,
+          vga_memory_size: 8 * 1024 * 1024,
+          screen_container: document.getElementById("screen_container"),
+          bios: { url: "{{ site.baseurl }}/assets/vm/bios/seabios.bin" },
+          vga_bios: { url: "{{ site.baseurl }}/assets/vm/bios/vgabios.bin" },
+          filesystem: {
+            baseurl: "{{ site.baseurl }}/assets/vm/images/alpine-rootfs-flat",
+            basefs: "{{ site.baseurl }}/assets/vm/images/alpine-fs.json",
+          },
+          autostart: true,
+          bzimage_initrd_from_filesystem: true,
+          cmdline: "rw root=host9p rootfstype=9p rootflags=trans=virtio,cache=loose modules=virtio_pci tsc=reliable init=/usr/bin/ysh",
+          //initial_state: { url: "../images/alpine-state.bin" },
+        });
+      };
+    </script>
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="header" class="monoweb">
+        {% include navigation.html %}
+      </div>
+      <div id="aside">
+        <div id="left" class="aside">
+          <div id="screen_container">
+            <div style="white-space: pre; font: 14px monospace; line-height: 14px"></div>
+            <canvas style="display: none"></canvas>
+          </div>
+        </div>
+        <div id="right" class="aside">
+          <div id="content" class="monoweb">
+            {{ content }}
+          </div>
+        </div>
+      </div>
+      <div id="footer" class="monoweb">
+      </div>
+      {% include footer.html %}
+    </div>
+  </body>
+</html>

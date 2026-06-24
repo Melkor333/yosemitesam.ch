@@ -4,13 +4,17 @@
 @import "reset.css";
 
 :root {
-  --font-family: "Monaspace Neon", monospace;
-  --line-height: 1.20rem;
-  --border-thickness: 2px;
   --text-color: #000;
   --text-color-alt: #666;
   --background-color: #fff;
   --background-color-alt: #eee;
+  font-size: 16px;
+}
+
+.monoweb {
+  --font-family: "Monaspace Neon", monospace;
+  --line-height: 1.20rem;
+  --border-thickness: 2px;
 
   --font-weight-normal: 500;
   --font-weight-medium: 600;
@@ -21,11 +25,15 @@
   font-weight: var(--font-weight-normal);
   font-style: normal;
   font-variant-numeric: tabular-nums lining-nums;
-  font-size: 16px;
+
+  padding: var(--line-height) 2ch;
+  max-width: calc(min(80ch, round(down, 100%, 1ch)));
+  line-height: var(--line-height);
+  overflow-x: hidden;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  .monoweb {
     --text-color: #fff;
     --text-color-alt: #aaa;
     --background-color: #000;
@@ -33,45 +41,43 @@
   }
 }
 
-* {
+.monoweb * {
   box-sizing: border-box;
 }
 
 
-* + * {
+.monoweb * + * {
   margin-top: var(--line-height);
 }
 
 html {
-  display: flex;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  flex-direction: column;
-  align-items: center;
   background: var(--background-color);
   color: var(--text-color);
 }
 
-body {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: var(--line-height) 2ch;
-  max-width: calc(min(80ch, round(down, 100%, 1ch)));
-  line-height: var(--line-height);
-  overflow-x: hidden;
-}
+//body {
+//  display: flex;
+//  flex: 1 0px;
+//  position: relative;
+//  width: 100%;
+//  height: 100%;
+//  margin: 0;
+//  padding: var(--line-height) 2ch;
+//  max-width: calc(min(80ch, round(down, 100%, 1ch)));
+//  line-height: var(--line-height);
+//  overflow-x: hidden;
+//}
 
 /* to allow attaching a footer */
 #container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   min-height: 100%;
   position: relative;
 }
 
-#content {
+.monoweb {
   padding-bottom: 2em;
 }
 
@@ -85,7 +91,7 @@ body {
   :root {
     font-size: 14px;
   }
-  body {
+  .monoweb {
     padding: var(--line-height) 1ch;
   }
 }
@@ -116,6 +122,7 @@ hr {
   border: none;
   color: var(--text-color);
 }
+
 hr:after {
   display: block;
   content: "";

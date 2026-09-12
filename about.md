@@ -4,6 +4,14 @@ title: Samuel Hierholzer
 ![Samuel Hierholzer]({{ site.baseurl }}/assets/images/me.jpeg){:class="img-small"}
 > System Engineer & open source enthusiast
 
+Because the right keeps dragging everything further right, and everything is political anyway, here's my view:
+
+- All people are equal. No matter the ethnic background, gender, wealth, looks, intelligence or anything else.
+- LGBTQ does *NOT* try to dictate my life by demanding a pronoun
+- Migration politics didn't fail. It's a thousand year old distraction from the *incredibly rich* while sneaking the money out of your pocket.
+
+---
+
 I do things on and with Linux.
 Current focus, some because I want and some because I must:
 

@@ -4,14 +4,6 @@ title: Samuel Hierholzer
 ![Samuel Hierholzer]({{ site.baseurl }}/assets/images/me.jpeg){:class="img-small"}
 > System Engineer & open source enthusiast
 
-Because the right keeps dragging everything further right, and everything is political anyway, here's my view:
-
-- All people are equal. No matter the ethnic background, gender, wealth, looks, intelligence or anything else.
-- LGBTQ does *NOT* try to dictate my life by demanding a pronoun
-- Migration politics didn't fail. It's a thousand year old distraction from the *incredibly rich* while sneaking the money out of your pocket.
-
----
-
 I do things on and with Linux.
 Current focus, some because I want and some because I must:
 
@@ -23,6 +15,16 @@ Current focus, some because I want and some because I must:
     - [Nixpkgs](https://github.com/search?q=repo%3ANixOS%2Fnixpkgs%20Melkor333&type=code)
     - [Pyaptly](https://github.com/adfinis/pyaptly)
     - [Aports](https://gitlab.alpinelinux.org/search?search=samuel+hierholzer&nav_source=navbar&project_id=1&group_id=2&search_code=true&repository_ref=master)
+
+---
+
+Because the right keeps dragging everything further right, and everything is political anyway, here's my view:
+
+- All people are equal. No matter the ethnic background, gender, wealth, looks, intelligence or anything else.
+- LGBTQ does *NOT* try to dictate my life by demanding a pronoun
+- Migration politics didn't fail. It's a thousand year old distraction from the *incredibly rich* while sneaking the money out of your pocket.
+
+
 {: .tree }
 <div id="footer">
 <details markdown=1>
